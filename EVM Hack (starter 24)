@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+class Main {
+        public static void main(String[] args) {
+
+                Scanner sc = new Scanner(System.in);
+                int t = sc.nextInt();
+
+                while (t-- > 0){
+                        int a = sc.nextInt();
+                        int b = sc.nextInt();
+                        int c = sc.nextInt();
+                        int p = sc.nextInt();
+                        int q = sc.nextInt();
+                        int r = sc.nextInt();
+                        int total = p+q+r;
+                        int max = big3(p,q,r);
+                        int max2 = big3(a+b, b+c, c+a);
+                System.out.println(" max : " + max + " max2 : " + max2 );
+                        if((max + max2) > total/2){
+                                System.out.println("yes");
+                        }else
+                                System.out.println("No");
+                }
+      }
+        static int big3(int x, int y , int z){
+                return z > (x > y ? x: y) ? z : ((x>y) ? x : y);
+        }
+
+}
