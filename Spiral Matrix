@@ -1,0 +1,55 @@
+package com.aditya;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] matrix = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        System.out.println(findSpiral(matrix));
+
+    }
+    static List findSpiral(int[][] matrix){
+        List<Integer> myList = new ArrayList<>();
+
+
+        if (matrix.length == 0 || matrix[0].length == 0) {
+            return myList;
+        }
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int top = 0, left = 0, down = n - 1, right = m - 1;
+        int dir = 0;
+
+        while (top <= down && left <= right) {
+            if (dir == 0) {
+                for (int i = left; i <= right; i++) {
+                    myList.add(matrix[top][i]);
+                }
+                top++;
+            } else if (dir == 1) {
+                for (int i = top; i <= down; i++) {
+                    myList.add(matrix[i][right]);
+                }
+                right--;
+            } else if (dir == 2) {
+                for (int i = right; i >= left; i--) {
+                    myList.add(matrix[down][i]);
+
+                }
+                down--;
+            } else if (dir == 3) {
+                for (int i = down; i <= top; i++) {
+                    myList.add(matrix[i][left]);
+
+                }
+                left++;
+            }
+            dir = (dir + 1) % 4;
+        }
+        return myList;
+    }
+}
+
